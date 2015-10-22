@@ -38,4 +38,14 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # config.action_mailer.default_url_options = { host: 'https://jpvn-manhnhhedspi-2.c9.io' }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  
+  config.action_mailer.default_url_options = { host: 'https://jpvn-manhnhhedspi-2.c9.io' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
 end
