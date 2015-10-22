@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  average_score: 1.5
+  test_done: 1
+  test_cancelled: 1
+  status: MyString
+  started_at: 2015-10-22 22:06:43
+  deadline: 2015-10-22 22:06:43
+
+two:
+  user_id: 1
+  average_score: 1.5
+  test_done: 1
+  test_cancelled: 1
+  status: MyString
+  started_at: 2015-10-22 22:06:43
+  deadline: 2015-10-22 22:06:43

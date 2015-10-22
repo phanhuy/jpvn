@@ -1,6 +1,6 @@
 class UserLogsController < ApplicationController
-  before_action :set_user_log, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user_log, only: [:show]
+  before_action :authenticate_user!
   # GET /user_logs
   # GET /user_logs.json
   def index

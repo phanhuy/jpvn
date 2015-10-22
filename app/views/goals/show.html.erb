@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @goal.user_id %>
+</p>
+
+<p>
+  <strong>Name of goal:</strong>
+  <%= @goal.name %>
+</p>
+
+<p>
+  <strong>Average score:</strong>
+  <%= @goal.average_score %>
+</p>
+
+<p>
+  <strong>Test done:</strong>
+  <%= @goal.test_done %>
+</p>
+============================================
+<p>
+  <strong>Current Average score:</strong>
+  <%= @goal.current_average_score %>
+</p>
+
+<p>
+  <strong>Current Test done:</strong>
+  <%= @goal.current_test_done %>
+</p>
+
+<p>
+  <strong>Test cancelled:</strong>
+  <%= @goal.test_cancelled %>
+</p>
+
+<p>
+  <strong>Started at:</strong>
+  <% if @goal.started_at == nil %>
+    <td>Not started</td>
+  <% else %>
+    <td><%= @goal.started_at %></td>
+  <% end %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @goal.deadline %>
+</p>
+
+<p>
+  <strong>Time now:</strong>
+  <%= Time.zone.now %>
+</p>
+
+<p>
+  <strong>Days left:</strong>
+  <% @days_left = @goal.deadline - Time.zone.now %>
+  <% if @days_left > 0 %>
+   <%= @days_left.to_i / 86400  %> days
+   <%= Time.at(@days_left.to_i % 86400).utc.strftime("%H hours %M minutes") %>
+  <% else %>
+    You missed this deadline.
+  <% end %>
+</p>
+
+<%= link_to "Edit", edit_goal_path(@goal) %> |
+<%= link_to "Back", goals_path %>
