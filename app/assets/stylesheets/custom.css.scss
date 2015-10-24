@@ -1,0 +1,36 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+
+body {
+    margin-left: 30px;  
+}
+.left-side{
+    float:left;
+    width:30%;
+}
+.right-side{
+    float:left;
+    width:60%;
+}
+.ox-name{
+    float: right;
+}
+.heikin-tensuu{
+    width:100px;
+    height:3px;
+    background-color:red;
+}
+.toreta-tensuu{
+    width:100px;
+    height:3px;
+    background-color:blue;
+}
+
+.description{
+    float: right;
+}
+.left{
+    float: left;
+}
