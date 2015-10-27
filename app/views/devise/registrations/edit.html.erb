@@ -4,6 +4,12 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
@@ -20,6 +26,16 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :gender %><br/>
+    <%= f.select :gender, options_for_select(["Male","Female"],"Male") %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :dateofbirth %><br/>
+    <%= f.date_select :dateofbirth %>
   </div>
 
   <div class="field">
