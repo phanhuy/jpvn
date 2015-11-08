@@ -235,3 +235,12 @@ footer ul li {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+.form_submit{
+  width: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #428bca;
+    color: white;
+    font-weight: bold;
+}
