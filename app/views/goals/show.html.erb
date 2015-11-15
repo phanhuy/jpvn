@@ -1,7 +1,8 @@
 <h1>目標管理</h1>
 <div>
 <%= link_to "Edit", edit_goal_path(@goal) %> |
-<%= link_to "Back", goals_path %>
+<%= link_to "Back", goals_path %> |
+<%= link_to "Destroy", @goal, method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
 
 <div class="left-side sidebar-offcanvas">
@@ -67,6 +68,7 @@
   <% @days_left = @goal.deadline - Time.zone.now %>
   <% if @days_left > 0 %>
    <%= @days_left.to_i / 86400  %> days
+   <%#= Time.at(@days_left.to_i % 86400).utc.strftime("%H hours %M minutes") %>
    <%= Time.at(@days_left.to_i % 86400).utc.strftime("%H hours %M minutes") %>
   <% else %>
     You missed this deadline.
@@ -113,28 +115,32 @@
                 //LINE randomly generated data
                 
                 var data0 = [];
-                for (var i = 1; i <= <%= @goal.test_done %>; i += 1) {
+                for (var i = 1; i <= 30; i += 1) {
                   data0.push([i,0]);
                 }
 
 					 //var data0 = [[1.0,0],[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[1,7],[1,8],[1,9],[1,10],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0]];             
 					 //var ox = [[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[<%= @goal.test_done %>,0]];
 					 var data1 = [[1,6],[2,8],[3,9],[4,5],[5,8],[6,9],[7,7]];
-					 var data2 = [[1,6],[10,6]];
+					 //var data2 = [[1,6],[10,6]];
 					 var data2 = [[1,<%= @goal.average_score %>],[<%= @goal.test_done %>,<%= @goal.average_score %>]];
-                var line_real_score = {
+           
+           var line_real_score = {
 							data: data1,
                     color: "#3c8dbc"
                 };
+                
                 var line_avarage_score = {
                     data: data2,
                     color: "red"
                 };
+                
                 var scale = {
                     data: data0,
-                    color: "black"
+                    color: "white"
                 };
-                $.plot("#line-chart", [line_real_score, line_avarage_score,scale], {
+                
+                $.plot("#line-chart", [line_real_score,line_avarage_score,scale], {
                     grid: {
                         hoverable: true,
                         borderColor: "#f3f3f3",
@@ -167,6 +173,7 @@
                     display: "none",
                     opacity: 0.8
                 }).appendTo("body");
+                
                 $("#line-chart").bind("plothover", function(event, pos, item) {
 
                     if (item) {
@@ -181,6 +188,8 @@
                     }
 
                 });
+                
+                
                 /* END LINE CHART */
             });
 

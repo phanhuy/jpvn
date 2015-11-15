@@ -3,9 +3,11 @@
     <%= link_to "ベトナム語学ぼう", '#', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "ホーム",   '#' %></li>
-        <li><%= link_to "お問い合わせ",   '#' %></li>
+        <li><%= link_to "ホーム",   '/' %></li>
+        <li><%= link_to "導入",   '/' %></li>
         <% if user_signed_in? %>
+          <li><%= link_to "勉強",   "/" %></li>
+          <li><%#= link_to "勉強ログ",   study_logs_path %></li>
           <li><%= link_to "テスト", "#" %></li>
           <li><%= link_to "目標管理", goals_path %></li>
           <li><%= link_to "ユーザリスト", users_path %></li>
@@ -24,6 +26,7 @@
           </li>
         <% else %>
           <li><%= link_to "サインイン", new_user_session_path %></li>
+          <li><%= link_to "サインアップ", new_user_registration_path %></li>
         <% end %>
       </ul>
     </nav>

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :study_logs
   
   # Follows a user.
   def follow(other_user)
@@ -49,6 +50,10 @@ class User < ActiveRecord::Base
   
   def friends
     Friend.where("user_id = ? or friend_id = ?", self.id, self.id)
+  end
+
+  def self.search(query)
+    where("name or email like ?", "%#{query}%") 
   end
   
 end

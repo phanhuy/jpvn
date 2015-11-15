@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>My Listing Goals</h1>
+<h1>目標リスト</h1>
 
 <table>
   <thead>
@@ -24,7 +24,7 @@
           <% else %>
             <td><%= goal.started_at %></td>
           <% end %>
-          <td><%= goal.deadline %></td>
+          <td><%= goal.deadline.strftime('%x') %></td>
           <td><%= link_to "Show", goal %></td>
           <td><%= link_to "Edit", edit_goal_path(goal) %></td>
           <td><%= link_to "Destroy", goal, method: :delete, data: { confirm: "Are you sure?" } %></td>
