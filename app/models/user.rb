@@ -50,5 +50,9 @@ class User < ActiveRecord::Base
   def friends
     Friend.where("user_id = ? or friend_id = ?", self.id, self.id)
   end
+
+  def self.search(query)
+    where("name or email like ?", "%#{query}%") 
+  end
   
 end

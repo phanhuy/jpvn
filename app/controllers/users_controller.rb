@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
   def index
-    @users = User.paginate(page: params[:page])
+    #@users = User.paginate(page: params[:page])
+    #@users = User.search(params[:search])
+    if params[:search]
+      @users = User.search(params[:search]).paginate(page: params[:page]).order("created_at DESC")
+    else
+      @users = User.paginate(page: params[:page]).order('created_at DESC')
+      #@users = User.all.order('created_at DESC')
+    end
   end
   
   def show
