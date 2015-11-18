@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :study_logs
   get 'friends/create'
 
   get 'friends/destroy'
