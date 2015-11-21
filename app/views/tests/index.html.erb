@@ -1,0 +1,19 @@
+<h3 class="row">
+  <%= t ".all_test" %>
+</h3>
+<div classs="row">
+  <div class="col-md-2 table-title">
+    <%= t ".test_category_name" %>
+  </div>
+  <div class="col-md-2 table-title">
+    <%= t ".test_user_answers_answered" %>
+  </div>
+  <div class="col-md-4 table-title">
+    <%= t ".test_create_time" %>
+  </div>
+  <div class="col-md-4 table-title">
+    <%= t ".test_mark" %>
+  </div>
+</div>
+<%= render @tests %>
+<%= will_paginate @tests %>

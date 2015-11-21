@@ -6,11 +6,13 @@
     <%= category.description %>
     <blockquote>
       <% category.words.each do |word| %>
-        <%= word.content %>
+          <%= word.vn_word %>,
       <% end %>
     </blockquote>
-    <button type="button", class="btn btn-default">
-      <%= t ".btn_process" %>
-    </button>
+    <%= form_for [category, category.tests.build] do |f| %>
+      <%= f.submit t(".btn_take"), class: "btn btn-primary col-md-2" %>
+    <% end %>
+    <%= button_to t(".btn_gotoword"), category_words_path(category),
+      method: :get, class: "btn btn-primary col-md-2" %>
   </div>
 </div>
