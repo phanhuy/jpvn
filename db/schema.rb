@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117033806) do
+ActiveRecord::Schema.define(version: 20151121031456) do
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "jp_word"
+    t.integer  "word_id"
+    t.boolean  "is_correct"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "answers", ["word_id"], name: "index_answers_on_word_id"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "friends", force: :cascade do |t|
     t.integer  "user_id"
@@ -55,6 +72,29 @@ ActiveRecord::Schema.define(version: 20151117033806) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "tests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.integer  "mark"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "tests", ["category_id"], name: "index_tests_on_category_id"
+  add_index "tests", ["user_id"], name: "index_tests_on_user_id"
+
+  create_table "user_answers", force: :cascade do |t|
+    t.integer  "test_id"
+    t.integer  "word_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_answers", ["answer_id"], name: "index_user_answers_on_answer_id"
+  add_index "user_answers", ["test_id"], name: "index_user_answers_on_test_id"
+  add_index "user_answers", ["word_id"], name: "index_user_answers_on_word_id"
+
   create_table "user_logs", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "log_data"
@@ -87,5 +127,15 @@ ActiveRecord::Schema.define(version: 20151117033806) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "words", force: :cascade do |t|
+    t.string   "vn_word"
+    t.string   "pronunciation"
+    t.integer  "category_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "words", ["category_id"], name: "index_words_on_category_id"
 
 end
