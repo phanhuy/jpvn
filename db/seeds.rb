@@ -37,6 +37,7 @@ followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 following.each { |follower| follower.follow(user) }
 
+
 # Fake Category
 Category.create!(name: "Danh từ",
                 description: "Danh từ trong tiếng Việt"
@@ -62,3 +63,10 @@ Category.create!(name: "Phương tiện giao thông",
 Category.create!(name: "Các môn thể thao",
                 description: "Các môn thể thao"
                 )
+
+user_feeds = User.order(:created_at).take(6)
+50.times do
+  learned_word = Faker::Number.digit
+  user_feeds.each { |user_feed| user_feed.study_logs.create!(learned_word: learned_word) }
+end
+
