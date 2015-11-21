@@ -1,0 +1,26 @@
+<div id="test-container", class="row">
+  <div class="col-md-2">
+    <%= test.category.name %>
+  </div>
+  <div class="col-md-6">
+    <div class="col-md-2">
+      <%= test.user_answers.answered.count %>
+      <%= t ".question_done" %>
+    </div>
+    <div class="col-md-4">
+      <%= test.created_at.to_formatted_s :short %>
+    </div>
+  </div>
+  <% unless test.finished? %>
+    <div class="col-md-4">
+      <%= button_to t(".take_test"), edit_test_path(test), method: :get, class: "btn btn-default" %>
+    </div>
+  <% else %>
+    <div class="col-md-4">
+      <%= test.mark %>
+      <%= t ".slash" %>
+      <%= test.user_answers.count %>
+    </div>
+  <% end %>
+</div>
+<hr>

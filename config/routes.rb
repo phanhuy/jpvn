@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   resources :categories, only: [:index]
-
+  resources :tests, except: [:new, :create, :destroy]
+    resources :categories do
+      resources :tests, only: :create
+      resources :words, only: :index
+    end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
