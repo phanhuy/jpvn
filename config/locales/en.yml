@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  categories:
+    index:
+      title: "All category"
+    category:
+      btn_process: "Start test"
