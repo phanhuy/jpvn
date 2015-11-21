@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :user_logs
+  has_many :study_logs
   has_many :goals
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -54,6 +55,12 @@ class User < ActiveRecord::Base
 
   def self.search(query)
     where("name or email like ?", "%#{query}%") 
+  end
+  
+  def feed
+    friend_ids = "SELECT friend_id FROM friends
+                     WHERE  user_id = :user_id"
+    StudyLog.where("user_id IN (#{friend_ids}) OR user_id = :user_id", user_id: id)
   end
   
 end

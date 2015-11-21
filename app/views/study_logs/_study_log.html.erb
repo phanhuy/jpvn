@@ -1,0 +1,8 @@
+<li id="study_log-<%= study_log.id %>">
+  <%= link_to gravatar_for(study_log.user, size: 50), study_log.user %>
+  <span class="user"><%= link_to study_log.user.name, study_log.user %></span>
+  <span class="content">
+      <b>Learned word</b>
+      <%= study_log.learned_word %>
+  </span>
+</li>
