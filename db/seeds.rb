@@ -37,3 +37,28 @@ followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 following.each { |follower| follower.follow(user) }
 
+# Fake Category
+Category.create!(name: "Danh từ",
+                description: "Danh từ trong tiếng Việt"
+                )
+Category.create!(name: "Động từ",
+                description: "Động từ trong tiếng Việt"
+                )
+Category.create!(name: "Tính từ",
+                description: "Tính từ trong tiếng Việt"
+                )
+Category.create!(name: "Đồ dùng gia đình",
+                description: "Đồ dùng gia đình"
+                )
+Category.create!(name: "Trường học",
+                description: "Trường học"
+                )
+Category.create!(name: "Nghề nghiệp",
+                description: "Nghề nghiệp"
+                )
+Category.create!(name: "Phương tiện giao thông",
+                description: "Phương tiện giao thông"
+                )
+Category.create!(name: "Các môn thể thao",
+                description: "Các môn thể thao"
+                )

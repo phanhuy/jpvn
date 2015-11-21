@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
+  resources :categories, only: [:index]
 
   
   # The priority is based upon order of creation: first created -> highest priority.
