@@ -3,9 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :user_logs
-  has_many :study_logs
-  has_many :goals
+  has_many :user_logs, dependent: :destroy
+  has_many :study_logs, dependent: :destroy
+  has_many :goals, dependent: :destroy
+  has_many :tests, dependent: :destroy
+  has_many :user_answers, through: :tests
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy

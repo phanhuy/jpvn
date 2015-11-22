@@ -30,6 +30,8 @@ class TestsController < ApplicationController
     if @test.update_attributes test_params
       @test.mark = @test.user_answers.correct_answer.count
       @test.save
+      user_log = UserLog.create(user_id: current_user.id,
+                      log_data: "Finish a test in category " + params[:category])
       redirect_to @test
     else
       render :edit
@@ -48,7 +50,7 @@ class TestsController < ApplicationController
   end
   
   def test_params
-    params.require(:test).permit user_answers_attributes: [:id, :answer_id]
+    params.require(:test).permit :category, user_answers_attributes: [:id, :answer_id]
   end
 
   def finished?

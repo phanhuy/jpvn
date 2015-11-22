@@ -160,7 +160,7 @@ en:
     test:
       take_test: "Take"
       question_done: "/Total"
-      slash: "in total"
+      slash: " correct in total"
     index:
       all_test: "All tests"
       test_category_name: "Category"

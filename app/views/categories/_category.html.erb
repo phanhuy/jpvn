@@ -9,8 +9,12 @@
           <%= word.vn_word %>,
       <% end %>
     </blockquote>
-    <%= form_for [category, category.tests.build] do |f| %>
-      <%= f.submit t(".btn_take"), class: "btn btn-primary col-md-2" %>
+    <% if category.words.count >= 20 %>
+      <%= form_for [category, category.tests.build] do |f| %>
+        <%= f.submit t(".btn_take"), class: "btn btn-primary col-md-2" %>
+      <% end %>
+    <% else %>
+      Not enough word to create test.
     <% end %>
     <%= button_to t(".btn_gotoword"), category_words_path(category),
       method: :get, class: "btn btn-primary col-md-2" %>
