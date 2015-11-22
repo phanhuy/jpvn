@@ -7,7 +7,7 @@
     <% @test.user_answers.each_with_index do |user_answer, index| %>
       <div class="col-md-4 question" >
         <%= index + 1 %>.&nbsp
-        <%= user_answer.word.vn_word %>  
+        <%= user_answer.word.vn_word %> 
       </div>
       <div class= "col-md-8">
         <% if user_answer.correct? %>
@@ -16,7 +16,12 @@
           </div>
         <% else %>
           <div class="answer-fail">
-            <%= t ".false_user_answer" %>
+            <% if user_answer.answer_id != nil %>
+              <%= t ".false_user_answer" %>
+              <%= user_answer.answer.jp_word %>
+            <% else %>
+              Not answer
+            <% end %>
           </div>
         <% end %>
       </div>

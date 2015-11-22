@@ -2,24 +2,28 @@
   <div class="col-md-2">
     <%= test.category.name %>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
     <div class="col-md-2">
       <%= test.user_answers.answered.count %>
       <%= t ".question_done" %>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
       <%= test.created_at.to_formatted_s :short %>
     </div>
   </div>
   <% unless test.finished? %>
-    <div class="col-md-4">
+    <div class="col-md-2">
       <%= button_to t(".take_test"), edit_test_path(test), method: :get, class: "btn btn-default" %>
     </div>
   <% else %>
-    <div class="col-md-4">
-      <%= test.mark %>
+    <div class="col-md-2">
+      <%= test.mark * 5 %> point(s)
+      (<%= test.mark %>
       <%= t ".slash" %>
-      <%= test.user_answers.count %>
+      <%= test.user_answers.count %>)
+    </div>
+    <div class="col-md-2 table-title">
+      <%= link_to "Show result of this test", test_path(test) %>
     </div>
   <% end %>
 </div>

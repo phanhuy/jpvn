@@ -20,6 +20,6 @@
     </div>
   <% end %>
   <div class="row">
-    <%= f.submit t(".submit"), class: "col-md-2 btn btn-primary", id: "submit_test" %>
+    <%= f.submit t(".submit"), class: "col-md-2 btn btn-primary", id: "submit_test", name: :category ,value: @test.category.name %>
   </div>
 <% end %>
