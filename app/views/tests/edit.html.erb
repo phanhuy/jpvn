@@ -1,23 +1,28 @@
+<% i = 0 %>
 <%= form_for @test do |f| %>
+<% i = i+1 %>
   <%= f.fields_for :user_answers do |builder| %>
     <div class="row question">
-      <div class="col-md-4">        
+      <div class="col-md-4 test-item-left">        
         <h3>
           <%= builder.options[:child_index] + 1 %>.
           <%= builder.object.word.vn_word %>
         </h3>
       </div>
-      <div class="col-md-8 container-fluid">
+      <div class="col-md-8 container-fluid test-item-right">
         <% builder.object.word.answers.suffer.each do |answer| %>
           <div class="row">
-            <%= builder.radio_button :answer_id, answer.id %>
-            <%= answer.jp_word %>
+            <div class="test-answer-radio"> <%= builder.radio_button :answer_id, answer.id %></div>
+            <div class="test-answer"><%= answer.jp_word %></div>
           </div>
           <hr>
         <% end %>
       </div>
-      <hr>
     </div>
+    <% if i%2==0 %>
+    <br><br><br><br>
+    <% end %>
+    
   <% end %>
   <div class="row">
     <%= hidden_field_tag :category , @test.category.name %>
@@ -25,3 +30,4 @@
     <%= f.submit "提出する", class: "col-md-2 btn btn-primary", id: "submit_test" %>
   </div>
 <% end %>
+<br><br>

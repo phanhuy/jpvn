@@ -4,11 +4,9 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "ホーム",   '/' %></li>
-        <li><%= link_to "導入",   '/' %></li>
+        <li><%= link_to "サイトについて",   introductions_path %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "勉強",   "/" %></li>
-          <li><%#= link_to "勉強ログ",   study_logs_path %></li>
-          <li><%= link_to "テスト", "#" %></li>
+          <li><%= link_to "勉強・テスト",   categories_path %></li>
           <li><%= link_to "目標管理", goals_path %></li>
           <li><%= link_to "ユーザリスト", users_path %></li>
           <li class="dropdown">
