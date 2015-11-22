@@ -28,6 +28,7 @@ class GoalsController < ApplicationController
   # GET /goals/new
   def new
     @goal = Goal.new
+    
   end
 
   # GET /goals/1/edit
@@ -46,7 +47,7 @@ class GoalsController < ApplicationController
     @user_logs.user_id = current_user.id
     @user_logs.log_data = "Creat new goal."
     @user_logs.save
-
+    StudyLog.create(user_id: current_user.id,content: @goal.name+"という目標を作りました。")
     respond_to do |format|
       if @goal.save
         format.html { redirect_to @goal, notice: "Goal was successfully created." }

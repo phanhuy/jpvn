@@ -31,8 +31,8 @@ class TestsController < ApplicationController
     if @test.update_attributes test_params
       @test.mark = @test.user_answers.correct_answer.count
       @test.save
-      user_log = UserLog.create(user_id: current_user.id,
-                      log_data: "Finish a test in category " + params[:category])
+      study_log = StudyLog.create(user_id: current_user.id,
+                      content: "Finish a test in category " + params[:category])
       redirect_to @test
     else
       render :edit

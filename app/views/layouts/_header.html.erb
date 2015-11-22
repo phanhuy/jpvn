@@ -6,7 +6,8 @@
         <li><%= link_to "ホーム",   '/' %></li>
         <li><%= link_to "サイトについて",   introductions_path %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "勉強・テスト",   categories_path %></li>
+          <li><%= link_to "単語のカテゴリ",  categories_path  %></li>
+          <li><%= link_to "テスト",   tests_path %></li>
           <li><%= link_to "目標管理", goals_path %></li>
           <li><%= link_to "ユーザリスト", users_path %></li>
           <li class="dropdown">
