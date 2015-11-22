@@ -5,7 +5,8 @@
   <div class="col-md-4">
     <div class="col-md-2">
       <%= test.user_answers.answered.count %>
-      <%= t ".question_done" %>
+      <%#= t ".question_done" %>
+      <p>/20</p>
     </div>
     <div class="col-md-2">
       <%= test.created_at.to_formatted_s :short %>
@@ -13,17 +14,18 @@
   </div>
   <% unless test.finished? %>
     <div class="col-md-2">
-      <%= button_to t(".take_test"), edit_test_path(test), method: :get, class: "btn btn-default" %>
+      <%#= button_to t(".take_test"), edit_test_path(test), method: :get, class: "btn btn-default" %>
+      <%= button_to "スタート", edit_test_path(test), method: :get, class: "btn btn-default" %>
     </div>
   <% else %>
     <div class="col-md-2">
-      <%= test.mark * 5 %> point(s)
-      (<%= test.mark %>
-      <%= t ".slash" %>
-      <%= test.user_answers.count %>)
+      <%= test.mark * 0.5 %>
+      <!-- (<%= test.mark %>
+      <%#= t ".slash" %>
+      <%= test.user_answers.count %>) -->
     </div>
     <div class="col-md-2 table-title">
-      <%= link_to "Show result of this test", test_path(test) %>
+      <%= link_to "詳しく見る", test_path(test) %>
     </div>
   <% end %>
 </div>

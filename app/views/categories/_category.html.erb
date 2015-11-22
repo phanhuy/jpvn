@@ -11,12 +11,16 @@
     </blockquote>
     <% if category.words.count >= 20 %>
       <%= form_for [category, category.tests.build] do |f| %>
-        <%= f.submit t(".btn_take"), class: "btn btn-primary col-md-2" %>
+        <%#= f.submit t(".btn_take"), class: "btn btn-primary col-md-2" %>
+        <%= f.submit "テスト", class: "btn btn-primary col-md-2" %>
       <% end %>
     <% else %>
-      Not enough word to create test.
+      <!-- Not enough word to create test. -->
+      <p> 単語の数が足りないので、テストを作成できません。 </p>
     <% end %>
-    <%= button_to t(".btn_gotoword"), category_words_path(category),
+    <%#= button_to t(".btn_gotoword"), category_words_path(category),
+      method: :get, class: "btn btn-primary col-md-2" %>
+    <%= button_to "単語", category_words_path(category),
       method: :get, class: "btn btn-primary col-md-2" %>
   </div>
 </div>
