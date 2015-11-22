@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121162839) do
+ActiveRecord::Schema.define(version: 20151122145735) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "jp_word"
@@ -73,9 +73,9 @@ ActiveRecord::Schema.define(version: 20151121162839) do
 
   create_table "study_logs", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "learned_word"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "content"
   end
 
   create_table "tests", force: :cascade do |t|

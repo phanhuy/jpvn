@@ -9,6 +9,8 @@ class WordsController < ApplicationController
     @categories_list = Category.all.collect{|category|
       [category.name, category_words_path(category)]}
 
+    StudyLog.create(user_id: current_user.id,content: @category.name+"というカテゴリを勉強しました。")
+
     respond_to :html, :js
   end
 end

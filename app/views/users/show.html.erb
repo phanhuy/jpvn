@@ -112,6 +112,15 @@
     <%= hidden_field_tag :friend_id, @user.id %>
     <%= submit_tag "Unfriend", class: "form_submit"%>    
 <% end %>
+
+<h4>下のグラフィックは<%= @user.name %>さんの勉強工程です。</h4>
+
+
+<% if @goal != nil  %>
+  <%= render @goal %>
+<% end  %>
+
+
 <%     end %>
 <br><br>
 
