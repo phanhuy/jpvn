@@ -39,29 +39,29 @@ following.each { |follower| follower.follow(user) }
 
 
 # Fake Category
-Category.create!(name: "Danh từ",
-                description: "Danh từ trong tiếng Việt"
+Category.create!(name: "名詞",
+                description: "名詞"
                 )
-Category.create!(name: "Động từ",
-                description: "Động từ trong tiếng Việt"
+Category.create!(name: "動詞",
+                description: "動詞"
                 )
-Category.create!(name: "Tính từ",
-                description: "Tính từ trong tiếng Việt"
+Category.create!(name: "形容詞",
+                description: "形容詞"
                 )
-Category.create!(name: "Đồ dùng gia đình",
-                description: "Đồ dùng gia đình"
+Category.create!(name: "家族",
+                description: "家族"
                 )
-Category.create!(name: "Trường học",
-                description: "Trường học"
+Category.create!(name: "学校",
+                description: "学校"
                 )
-Category.create!(name: "Nghề nghiệp",
-                description: "Nghề nghiệp"
+Category.create!(name: "職業",
+                description: "職業"
                 )
-Category.create!(name: "Phương tiện giao thông",
-                description: "Phương tiện giao thông"
+Category.create!(name: "乗車",
+                description: "乗車"
                 )
-Category.create!(name: "Các môn thể thao",
-                description: "Các môn thể thao"
+Category.create!(name: "スポーツ",
+                description: "スポーツ"
                 )
 
 user_feeds = User.order(:created_at).take(6)
@@ -270,12 +270,20 @@ Answer.create!(jp_word: "休みます",
                 is_correct: true
                 )
 all_words = Word.all
-random_failed_answer = ["来ます", "買い物します", "忘れます", "やめます", "迎えます", "負けます", "始めます"]
+random_failed_answer_1 = ["来ます", "買い物します", "忘れます", "やめます", "迎えます", "負けます", "始めます"]
+random_failed_answer_2 = ["練習します", "留学します", "予約します", "持って来ます", "引っ越します"]
+random_failed_answer_3 = ["電話します", "連れて来ます", "掃除します", "洗濯します", "説明します"]
 all_words.each do |item|
-  3.times do ||
-    Answer.create!(jp_word: random_failed_answer[rand(0..random_failed_answer.length-1)],
-                  word_id: item.id,
-                  is_correct: false
-                  )
-  end
+  Answer.create!(jp_word: random_failed_answer_1[rand(0..random_failed_answer_1.length-1)],
+              word_id: item.id,
+              is_correct: false
+              )
+  Answer.create!(jp_word: random_failed_answer_2[rand(0..random_failed_answer_2.length-1)],
+              word_id: item.id,
+              is_correct: false
+              )
+  Answer.create!(jp_word: random_failed_answer_3[rand(0..random_failed_answer_3.length-1)],
+              word_id: item.id,
+              is_correct: false
+              )
 end

@@ -20,6 +20,8 @@
     </div>
   <% end %>
   <div class="row">
-    <%= f.submit t(".submit"), class: "col-md-2 btn btn-primary", id: "submit_test", name: :category ,value: @test.category.name %>
+    <%= hidden_field_tag :category , @test.category.name %>
+    <%#= f.submit t(".submit"), class: "col-md-2 btn btn-primary", id: "submit_test" %>
+    <%= f.submit "提出する", class: "col-md-2 btn btn-primary", id: "submit_test" %>
   </div>
 <% end %>
