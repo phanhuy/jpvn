@@ -5,11 +5,24 @@ class GoalsController < ApplicationController
   # GET /goals.json
   def index
     @goals = current_user.goals
+    
+    
+    #current goal:
+    @goal = current_user.goals.where("deadline > ?",Time.now).first
+    #byebug
+    if @goal != nil
+      @tests = current_user.tests.where("mark >= 0 and created_at > ? and created_at < ?",@goal.created_at,@goal.deadline).order('created_at ASC')
+    end
   end
 
   # GET /goals/1
   # GET /goals/1.json
   def show
+    @goal = current_user.goals.where("deadline > ?",Time.now).first
+    #byebug
+    if @goal != nil
+      @tests = current_user.tests.where("mark >= 0 and created_at > ? and created_at < ?",@goal.created_at,@goal.deadline).order('created_at ASC')
+    end
   end
 
   # GET /goals/new

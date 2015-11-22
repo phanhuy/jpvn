@@ -432,7 +432,11 @@ ul li .time-ago {
   padding: 10px; 
 }
 .question{
-  font-size: 110%; 
+    font-size: 110%;
+    width: 600px;
+    float: left;
+    margin-bottom: 50px;
+    border-bottom: 2px solid #00C4FF;
 }
 #Date {
   font-family: "BebasNeueRegular", Arial, Helvetica, sans-serif;
@@ -490,4 +494,21 @@ ul li .time-ago {
 .clock{
   position: relative;
   left: 45%;
+}
+
+
+.test-item-left{
+ width: 270px;
+}
+.test-item-right{
+  max-width: 200px;
+}
+.test-answer-radio{
+  width: 18px;
+    float: left;
+    margin-right: 40px;
+    margin-left: 30px;
+}
+.test-answer{
+  
 }

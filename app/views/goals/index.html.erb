@@ -1,14 +1,38 @@
 <p id="notice"><%= notice %></p>
 
+<style >
+  th,td{
+    padding: 20px;
+    text-align: center;
+  }
+  table{
+    margin-left: 400px;
+  }
+</style>
+<h1>今の目標</h1>
+
+<% if @goal != nil  %>
+<%#= render @tests %>
+<%#= @tests.count  %>
+  <%= render @goals %>
+<% else  %>
+<h2>している目標はまだありません。</h2><br>
+<h2><%= link_to "新しい目標を作る", new_goal_path, id: "search-form" %>  </h2>
+<% end  %>
+
+<br>
+<hr>
+<br>
 <h1>目標リスト</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name of goal</th>
-      <th>Average score</th>
-      <th>Started at</th>
-      <th>Deadline</th>
+      <th>目標名</th>
+      <th>平均の点数</th>
+      <th>状況</th>
+      <th>開始</th>
+      <th>締め切り</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,23 +43,21 @@
         <tr>
           <td><%= goal.name %></td>
           <td><%= goal.average_score %></td>
-          <% if goal.started_at. == nil %>
-            <td>Not started</td>
+          <% if goal.deadline > Time.now %>
+            <td>している</td>
           <% else %>
-            <td><%= goal.started_at %></td>
+            <td>終わった</td>
           <% end %>
+          <td><%= goal.created_at.strftime('%x') %></td>
           <td><%= goal.deadline.strftime('%x') %></td>
-          <td><%= link_to "Show", goal %></td>
-          <td><%= link_to "Edit", edit_goal_path(goal) %></td>
-          <td><%= link_to "Destroy", goal, method: :delete, data: { confirm: "Are you sure?" } %></td>
+          <td><%= link_to "見る", goal %></td>
+          <td><%= link_to "削除", goal, method: :delete, data: { confirm: "本当にしたいですか?" } %></td>
         </tr>
       <% end %>
     <% else %>
-      <p> You have 0 goal. </p>
+      <p> 目標の数量は０です。 </p>
     <% end %>  
   </tbody>
 </table>
 
 <br>
-
-<%= link_to "New Goal", new_goal_path %>

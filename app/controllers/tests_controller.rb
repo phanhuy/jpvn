@@ -21,6 +21,7 @@ class TestsController < ApplicationController
   end
 
   def show
+    
   end
 
   def edit
@@ -40,7 +41,13 @@ class TestsController < ApplicationController
 
   private
   def current_test
-    @test = Test.find params[:id]
+    if Test.exists?(params[:id])
+      @test = Test.find params[:id]
+    else
+      redirect_to root_path
+    end
+  
+    
   end
 
   def correct_user

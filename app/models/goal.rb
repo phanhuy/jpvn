@@ -3,6 +3,7 @@ class Goal < ActiveRecord::Base
   validate :deadline_valid?
 
   belongs_to :user
+  belongs_to :friend
 
   def deadline_valid?
     if deadline <= Time.zone.now

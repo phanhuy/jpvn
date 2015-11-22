@@ -18,7 +18,14 @@ class UsersController < ApplicationController
             @status = current_user.status_with @user.id
             @friend = Friend.where(user_id: current_user.id, friend_id: @user.id).try(:first) ||
                 Friend.where(user_id: @user.id, friend_id: current_user.id).try(:first)
+                
+            @goal = Goal.where("deadline > ? and user_id = ?",Time.now,@user.id).first
+            if @goal != nil
+              @tests = Test.where("user_id = ? and mark >= 0 and created_at > ? and created_at < ?",@user.id,@goal.created_at,@goal.deadline).order('created_at ASC')
+            end
     end
+    
+    
   end
   
   def following

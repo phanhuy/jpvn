@@ -104,12 +104,26 @@
     <%= submit_tag "Reject", class: "form_submit" %>    
 <% end %>
 <%         when :be_accepted, :accepted %>
-<h4>FRIEND</h4>
+<br><br>
+<h4>あなたと<%= @user.name %> さんは友達です。 </h4>
+<br>
 <%= form_tag "/friends/#{@friend.id}", method: :delete do %>
     <%= hidden_field_tag :id, @friend.id %>
     <%= hidden_field_tag :friend_id, @user.id %>
     <%= submit_tag "Unfriend", class: "form_submit"%>    
 <% end %>
 <%     end %>
+<br><br>
+
+<h4>下のグラフィックは<%= @user.name %>さんの勉強工程です。</h4>
+<%= @goal.name %>
+
+
+<% if @goal != nil  %>
+  <%= render @goal %>
+<% end  %>
+
+
+
 <% end %>
 
