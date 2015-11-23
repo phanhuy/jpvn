@@ -10,7 +10,7 @@
   }
 </style>
 <h1>今の目標</h1>
-
+<h2><%= link_to "新しい目標を作る", new_goal_path, id: "search-form" %>  </h2>
 <% if @goal != nil  %>
 <%#= render @tests %>
 <%#= @tests.count  %>
@@ -44,7 +44,7 @@
           <td><%= goal.name %></td>
           <td><%= goal.average_score %></td>
           <% if goal.deadline > Time.now %>
-            <td>している</td>
+            <td>実行中</td>
           <% else %>
             <td>終わった</td>
           <% end %>

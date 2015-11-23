@@ -60,9 +60,7 @@ class User < ActiveRecord::Base
   end
   
   def feed
-    friend_ids = "SELECT friend_id FROM friends
-                     WHERE  user_id = :user_id"
-    StudyLog.where("user_id IN (#{friend_ids}) OR user_id = :user_id", user_id: id)
+    StudyLog.where("user_id = :user_id", user_id: id).order('created_at DESC')
   end
   
 end

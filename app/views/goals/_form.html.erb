@@ -2,7 +2,6 @@
   <% if @goal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
-
       <ul>
       <% @goal.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,7 +11,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "Name of goal" %><br>
+    <%= f.label "目標名" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -20,11 +19,11 @@
     <%= f.text_field :average_score %>
   </div>
   <div class="field">
-    <%= f.label "Number of Test (Todo)" %><br>
+    <%= f.label "やりたいテストの数量" %><br>
     <%= f.number_field :test_done %>
   </div>
   <div class="field">
-    <%= f.label :deadline %><br>
+    <%= f.label "締め切り" %><br>
     <%= f.datetime_select :deadline %>
   </div>
   <div class="actions">

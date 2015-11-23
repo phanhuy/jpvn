@@ -1,8 +1,12 @@
 <li id="study_log-<%= study_log.id %>">
-  <%= link_to gravatar_for(study_log.user, size: 50), study_log.user %>
-  <span class="user"><%= link_to study_log.user.name, study_log.user %></span>
-  <span class="content">
-      <b>Learned word</b>
-      <%= study_log.learned_word %>
+  <%#= link_to gravatar_for(study_log.user, size: 50), study_log.user %>
+  <img class="gravatar" src="https://cdn2.iconfinder.com/data/icons/my-cubicle/512/Notepad-512.png" style="width: 50px;height: 35px;">
+  <span class="user">
+    <b>動作</b>
+      <%= study_log.content %>
+  </span>
+  <span class="content" style="">
+      <b>日時</b>
+      <%= study_log.created_at.strftime('%c') %>
   </span>
 </li>
