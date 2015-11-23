@@ -105,7 +105,7 @@
 <% end %>
 <%         when :be_accepted, :accepted %>
 <br><br>
-<h4>あなたと<%= @user.name %> さんは友達です。 </h4>
+<h4>あなたと<%= @user.name %> さんは友達になりました。 </h4>
 <br>
 <%= form_tag "/friends/#{@friend.id}", method: :delete do %>
     <%= hidden_field_tag :id, @friend.id %>
@@ -113,26 +113,17 @@
     <%= submit_tag "Unfriend", class: "form_submit"%>    
 <% end %>
 
-<h4>下のグラフィックは<%= @user.name %>さんの勉強工程です。</h4>
+
 
 
 <% if @goal != nil  %>
+<h4>下のグラフィックは<%= @user.name %>さんの勉強工程です。</h4>
   <%= render @goal %>
 <% end  %>
 
 
 <%     end %>
 <br><br>
-
-<h4>下のグラフィックは<%= @user.name %>さんの勉強工程です。</h4>
-<%= @goal.name %>
-
-
-<% if @goal != nil  %>
-  <%= render @goal %>
-<% end  %>
-
-
 
 <% end %>
 
