@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20151122145735) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "content"
+    t.integer "learned_word"
   end
 
   create_table "tests", force: :cascade do |t|
