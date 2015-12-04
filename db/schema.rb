@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122145735) do
+ActiveRecord::Schema.define(version: 20151204164202) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "jp_word"
@@ -73,10 +73,10 @@ ActiveRecord::Schema.define(version: 20151122145735) do
 
   create_table "study_logs", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "content"
-    t.integer "learned_word"
+    t.integer  "learned_word"
   end
 
   create_table "tests", force: :cascade do |t|
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20151122145735) do
     t.integer  "category_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.boolean  "bookmark"
   end
 
   add_index "words", ["category_id"], name: "index_words_on_category_id"

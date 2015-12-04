@@ -1,26 +1,58 @@
-<!-- <div class="row">
-  <#%= form_tag category_words_path(@category.id),
+<script type="text/javascript">
+  function editBookmark(word_id, action, category_id){
+    id = "#word-"+word_id;
+    if (action == 1)
+      type_of_action = "set_no_bookmark";
+    else if (action == 2)
+      type_of_action = "set_bookmark";
+    $.ajax({
+      url: "words/"+word_id,
+      type: "PATCH",
+      data: {
+        authenticity_token: $("input[name=authenticity_token]").val(),
+        type_of_action: type_of_action,
+        category_id: category_id,
+        word_id: word_id
+      },
+      success: function(data){
+        if (data.message = "ok"){
+          if (action == 1)
+            $(id).attr("src", "/assets/no-bookmark.png");
+          else if (action == 2)
+            $(id).attr("src", "/assets/bookmark.png");
+        }
+      }
+    });
+  };
+</script>
+
+<div class="row">
+  <%= form_tag category_words_path(@category.id),
     method: :get, class: "form-inline", id: "filter-form" do %>    
     <div class="form-group">
-      <#% Settings.category_type.each do |key, type| %>
+      <% ["全部", "ブックマーク", "ブックマークしません"].each do |key| %>
         <label>
-          <#%= radio_button_tag :filter_state, type, type == @filter_state, class: "form-control" %>
-          <#%= t ".#{key}" %>
+          <% if @filter_state == key %>
+            <%= radio_button_tag :filter_state, key, true, class: "form-control" %>
+          <% else %>
+            <%= radio_button_tag :filter_state, key, false, class: "form-control" %>
+          <% end %>
+          <%= key %>
         </label>
-      <#% end %>
+      <% end %>
     </div>
     <div class="form-group">
-      <#%= submit_tag t(".btn_filter"), class: "btn btn-default" %>
+      <%= submit_tag "示す", class: "btn btn-default" %>
     </div>
-  <#% end %>
-</div> -->
-
+  <% end %>
+</div>
 
 <hr>
 
-<div class="row", id="word_list">
+<div class="row" id="word_list">
   <%= render @words %>
 </div>
 <div class="row">
   <%= will_paginate @words %>
 </div>
+<input type="hidden" id="count" value=<%= @words.count() %>>

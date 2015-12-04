@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :tests, except: [:new, :create, :destroy]
     resources :categories do
       resources :tests, only: :create
-      resources :words, only: :index
+      resources :words, only: [:index, :update]
     end
   
   # The priority is based upon order of creation: first created -> highest priority.
