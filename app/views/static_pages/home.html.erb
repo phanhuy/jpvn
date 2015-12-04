@@ -1,18 +1,34 @@
 <% if user_signed_in? %>
   <div class="row">
-    <aside class="col-md-4">
+    <aside class="col-md-6">
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
+
+      <div class="col-md-8">
+        <h3>学習ログ</h3>
+        <%= render 'shared/feed' %>
+      </div>
     </aside>
-    <div class="col-md-8">
-      <h3>学習ログ</h3>
-      <%= render 'shared/feed' %>
+    <div class="col-md-6">
+      
+    
+    <h1>実行中の目標</h1>
+      <h2><%= link_to "新しい目標を作る", new_goal_path, id: "search-form" %>  </h2>
+      <% if @goal != nil  %>
+      <%#= render @tests %>
+      <%#= @tests.count  %>
+        <%= render 'shared/goal_home' %>
+      <% else  %>
+      <h2>実行中の目標はまだありません。</h2><br>
+      <h2><%= link_to "新しい目標を作る", new_goal_path, id: "search-form" %>  </h2>
+      <% end  %>
     </div>
+    
   </div>
 <% else %>
   <div class="center jumbotron">
-    <h1>Welcome to the JPVN App</h1>
+    <h1>「ベトナム語を学ぼう」へようこそ！</h1>
 
     <h2>
       This is the home page of web for Japanese people want to learn Vietnamese

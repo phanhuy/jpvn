@@ -1,9 +1,6 @@
-<div class="row">
-  <div class="col-md-4">
-    <%= category.name %>
-  </div>
+<div class="row" >
   <div class="col-md-8">
-    <%= category.description %>
+    <div style="font-size: 3em;letter-spacing: -2px;margin-bottom: 30px;"><%= category.name %></div>
     <blockquote>
       <% category.words.each do |word| %>
           <%= word.vn_word %>,
@@ -12,7 +9,7 @@
     <% if category.words.count >= 20 %>
       <%= form_for [category, category.tests.build] do |f| %>
         <%#= f.submit t(".btn_take"), class: "btn btn-primary col-md-2" %>
-        <%= f.submit "テスト", class: "btn btn-primary col-md-2" %>
+        <%= f.submit "テスト", class: "btn btn-primary col-md-2 do-test" %>
       <% end %>
     <% else %>
       <!-- Not enough word to create test. -->
@@ -24,3 +21,4 @@
       method: :get, class: "btn btn-primary col-md-2" %>
   </div>
 </div>
+<hr>

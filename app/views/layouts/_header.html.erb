@@ -1,8 +1,14 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "ベトナム語学ぼう", '#', id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
+<header role="banner" class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        
+        
+        <div class="navbar-header">
+          <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+        </div>
+        <%= link_to "ベトナム語学ぼう", '#', id: "logo" %>
+        <div class="navbar-inverse side-collapse in">
+          <nav role="navigation" class="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "ホーム",   '/' %></li>
         <li><%= link_to "サイトについて",   introductions_path %></li>
         <% if user_signed_in? %>
@@ -28,6 +34,20 @@
           <li><%= link_to "サインアップ", new_user_registration_path %></li>
         <% end %>
       </ul>
-    </nav>
-  </div>
-</header>
+          </nav>
+        </div>
+      </div>
+    </header>
+    
+
+<script type="text/javascript">
+  
+              var sideslider = $('[data-toggle=collapse-side]');
+            var sel = sideslider.attr('data-target');
+            var sel2 = sideslider.attr('data-target-2');
+            sideslider.click(function(event){
+                $(sel).toggleClass('in');
+                $(sel2).toggleClass('out');
+            });
+  
+</script>
